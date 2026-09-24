@@ -16,6 +16,15 @@ https://github.com/Ayush-620/AapdaSetu-Mobile/releases/latest
 # Website Access 
 https://aapdasetu-ngo-included.onrender.com/
 
+**Credential for Login on Website**
+**For Admin**
+ID: admin@ndma.gov.in
+Password: admin123#1@
+
+**For NGO**
+ID: NGO-TEST-002
+Password: test123
+
 ## 🎯 Problem Statement
 
 During disasters, critical information is often scattered across weather agencies, government alerts, citizens, social media, and field-level organizations.
