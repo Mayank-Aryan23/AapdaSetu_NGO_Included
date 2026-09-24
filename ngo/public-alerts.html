@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AapdaSetu | Public Alerts</title>
+
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    >
+
+
+    <!-- NGO Public Alerts CSS -->
+    <link
+        rel="stylesheet"
+        href="css/public-alerts.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <!-- ==================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="col-md-2 sidebar d-none d-md-flex flex-column">
+
+
+            <!-- BRAND -->
+
+            <div class="sidebar-brand">
+
+                <i class="bi bi-shield-shaded"></i>
+
+                <span>
+                    AapdaSetu
+                </span>
+
+            </div>
+
+
+            <div class="sidebar-section-title">
+                NGO COMMAND CENTER
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar-navigation">
+
+                <a
+                    href="index.html"
+                    class="sidebar-link"
+                >
+                    <i class="bi bi-speedometer2"></i>
+                    <span>Response Operations</span>
+                </a>
+
+
+                <a
+                    href="public-alerts.html"
+                    class="sidebar-link active"
+                >
+                    <i class="bi bi-broadcast"></i>
+                    <span>Public Alerts</span>
+                </a>
+
+
+                <a
+                    href="my-responses.html"
+                    class="sidebar-link"
+                >
+                    <i class="bi bi-clipboard-check"></i>
+                    <span>My Responses</span>
+                </a>
+
+
+                <a
+                    href="analytics.html"
+                    class="sidebar-link"
+                >
+                    <i class="bi bi-bar-chart-line-fill"></i>
+                    <span>Analytics</span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR BOTTOM -->
+
+            <div class="sidebar-bottom mt-auto">
+
+                <div class="ngo-mini-profile">
+
+                    <div class="ngo-avatar">
+                        <i class="bi bi-building"></i>
+                    </div>
+
+                    <div class="ngo-mini-info">
+
+                        <strong id="sidebar-ngo-name">
+                            Loading...
+                        </strong>
+
+                        <small id="sidebar-ngo-code">
+                            NGO
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    onclick="logout()"
+                >
+                    <i class="bi bi-box-arrow-left"></i>
+                    Secure Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ==================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="col-md-10 main-content">
+
+
+            <!-- ==================================================
+                 PAGE HEADER
+            ================================================== -->
+
+            <div class="top-header">
+
+                <div class="page-header">
+
+                    <div class="page-kicker">
+                        NGO RESPONSE NETWORK
+                    </div>
+
+                    <h2>
+                        Public Alerts
+                    </h2>
+
+                    <p>
+                        Monitor official disaster alerts and
+                        public safety broadcasts.
+                    </p>
+
+                </div>
+
+
+                <!-- NGO IDENTITY -->
+
+                <div class="ngo-identity">
+
+                    <div class="identity-icon">
+
+                        <i class="bi bi-building-check"></i>
+
+                    </div>
+
+
+                    <div class="identity-details">
+
+                        <small>
+                            AUTHORIZED NGO
+                        </small>
+
+                        <strong id="ngoName">
+                            Loading...
+                        </strong>
+
+                        <span id="ngoCode">
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="online-indicator">
+
+                        <span></span>
+
+                        ACTIVE
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 SUMMARY CARDS
+            ================================================== -->
+
+            <div class="row g-3 mb-4">
+
+
+                <!-- ACTIVE -->
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="card summary-card active-card">
+
+                        <div class="summary-icon">
+
+                            <i class="bi bi-broadcast"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="summary-label">
+                                ACTIVE ALERTS
+                            </div>
+
+                            <div
+                                class="summary-number"
+                                id="activeAlertCount"
+                            >
+                                0
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CRITICAL -->
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="card summary-card critical-card">
+
+                        <div class="summary-icon">
+
+                            <i class="bi bi-exclamation-octagon"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="summary-label">
+                                CRITICAL
+                            </div>
+
+                            <div
+                                class="summary-number"
+                                id="criticalAlertCount"
+                            >
+                                0
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- HIGH -->
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="card summary-card high-card">
+
+                        <div class="summary-icon">
+
+                            <i class="bi bi-exclamation-triangle"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="summary-label">
+                                HIGH PRIORITY
+                            </div>
+
+                            <div
+                                class="summary-number"
+                                id="highAlertCount"
+                            >
+                                0
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RESOLVED -->
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="card summary-card resolved-card">
+
+                        <div class="summary-icon">
+
+                            <i class="bi bi-check-circle"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="summary-label">
+                                RESOLVED
+                            </div>
+
+                            <div
+                                class="summary-number"
+                                id="resolvedAlertCount"
+                            >
+                                0
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 ALERT PANEL
+            ================================================== -->
+
+            <div class="card alert-panel">
+
+
+                <!-- PANEL HEADER -->
+
+                <div class="alert-panel-header">
+
+                    <div>
+
+                        <h5>
+
+                            <i class="bi bi-broadcast-pin text-primary"></i>
+
+                            Public Safety Alerts
+
+                        </h5>
+
+                        <small>
+                            Official alerts currently available
+                            to the NGO response network.
+                        </small>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-outline-secondary refresh-btn"
+                        onclick="loadPublicAlerts()"
+                        id="refreshAlertsBtn"
+                    >
+
+                        <i class="bi bi-arrow-clockwise"></i>
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     FILTER BAR
+                ================================================== -->
+
+                <div class="alert-filter-bar">
+
+
+                    <div class="filter-group">
+
+                        <label for="statusFilter">
+                            STATUS
+                        </label>
+
+                        <select
+                            id="statusFilter"
+                            class="form-select"
+                            onchange="renderAlerts()"
+                        >
+
+                            <option value="ALL">
+                                ALL
+                            </option>
+
+                            <option value="ACTIVE">
+                                ACTIVE
+                            </option>
+
+                            <option value="RESOLVED">
+                                RESOLVED
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="filter-group">
+
+                        <label for="severityFilter">
+                            SEVERITY
+                        </label>
+
+                        <select
+                            id="severityFilter"
+                            class="form-select"
+                            onchange="renderAlerts()"
+                        >
+
+                            <option value="ALL">
+                                ALL
+                            </option>
+
+                            <option value="CRITICAL">
+                                CRITICAL
+                            </option>
+
+                            <option value="HIGH">
+                                HIGH
+                            </option>
+
+                            <option value="MODERATE">
+                                MODERATE
+                            </option>
+
+                            <option value="INFO">
+                                INFORMATION
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="alert-legend">
+
+                        <span>
+                            <i class="legend-dot critical"></i>
+                            Critical
+                        </span>
+
+                        <span>
+                            <i class="legend-dot high"></i>
+                            High
+                        </span>
+
+                        <span>
+                            <i class="legend-dot moderate"></i>
+                            Moderate
+                        </span>
+
+                        <span>
+                            <i class="legend-dot info"></i>
+                            Information
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================================
+                     ALERT FEED
+                ================================================== -->
+
+                <div
+                    id="publicAlertsFeed"
+                    class="public-alerts-feed"
+                >
+
+                    <div class="loading-state">
+
+                        <div
+                            class="spinner-border text-primary"
+                            role="status"
+                        ></div>
+
+                        <p>
+                            Loading public alerts...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 FOOTER
+            ================================================== -->
+
+            <footer class="dashboard-footer">
+
+                <span>
+                    AapdaSetu Disaster Response Network
+                </span>
+
+                <span>
+
+                    <i class="bi bi-shield-lock-fill"></i>
+
+                    Authorized NGO Access
+
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+</div>
+
+
+
+<!-- Bootstrap -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
+
+
+<!-- Supabase -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<!-- Existing authentication guard -->
+
+<script src="../auth-guard.js"></script>
+
+
+<!-- Public Alerts -->
+
+<script src="js/public-alerts.js"></script>
+
+
+</body>
+
+</html>

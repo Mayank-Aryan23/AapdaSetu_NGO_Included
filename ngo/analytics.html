@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AapdaSetu | Analytics</title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         ANALYTICS CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/analytics.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+
+
+        <!-- =================================================
+             NGO SIDEBAR
+        ================================================== -->
+
+        <aside class="col-md-2 sidebar d-none d-md-flex">
+
+            <div class="sidebar-brand">
+
+                <i class="bi bi-shield-shaded"></i>
+
+                <span>
+                    AapdaSetu
+                </span>
+
+            </div>
+
+
+            <div class="sidebar-section-title">
+                NGO COMMAND CENTER
+            </div>
+
+
+            <nav class="sidebar-navigation">
+
+                <a
+                    href="index.html"
+                    class="sidebar-link"
+                >
+
+                    <i class="bi bi-speedometer2"></i>
+
+                    <span>
+                        Response Operations
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="public-alerts.html"
+                    class="sidebar-link"
+                >
+
+                    <i class="bi bi-broadcast"></i>
+
+                    <span>
+                        Public Alerts
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="my-responses.html"
+                    class="sidebar-link"
+                >
+
+                    <i class="bi bi-clipboard-check"></i>
+
+                    <span>
+                        My Responses
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="analytics.html"
+                    class="sidebar-link active"
+                >
+
+                    <i class="bi bi-bar-chart-line-fill"></i>
+
+                    <span>
+                        Analytics
+                    </span>
+
+                </a>
+
+            </nav>
+
+
+            <!-- =================================================
+                 SIDEBAR PROFILE
+            ================================================== -->
+
+            <div class="sidebar-bottom">
+
+                <div class="ngo-mini-profile">
+
+                    <div class="ngo-avatar">
+
+                        <i class="bi bi-building"></i>
+
+                    </div>
+
+
+                    <div class="ngo-mini-info">
+
+                        <strong id="sidebar-ngo-name">
+                            Loading...
+                        </strong>
+
+                        <small id="sidebar-ngo-code">
+                            NGO
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="logout-btn"
+                    id="ngoLogoutBtn"
+                    type="button"
+                >
+
+                    <i class="bi bi-box-arrow-left"></i>
+
+                    Secure Logout
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="col-md-10 main-content">
+
+
+            <!-- =================================================
+                 TOP HEADER
+            ================================================== -->
+
+            <header class="top-header">
+
+
+                <div class="page-header">
+
+                    <div class="page-kicker">
+                        NGO RESPONSE NETWORK
+                    </div>
+
+
+                    <h2>
+                        Analytics & Insights
+                    </h2>
+
+
+                    <p>
+                        Review your NGO's response performance,
+                        case outcomes and operational trends.
+                    </p>
+
+                </div>
+
+
+
+                <div class="header-actions">
+
+
+                    <!-- NGO IDENTITY -->
+
+                    <div class="ngo-identity">
+
+                        <div class="identity-icon">
+
+                            <i class="bi bi-building-check"></i>
+
+                        </div>
+
+
+                        <div class="identity-details">
+
+                            <small>
+                                AUTHORIZED NGO
+                            </small>
+
+
+                            <strong id="header-ngo-name">
+                                Loading...
+                            </strong>
+
+
+                            <span id="header-ngo-code">
+                                NGO
+                            </span>
+
+                        </div>
+
+
+                        <div class="online-indicator">
+
+                            <span></span>
+
+                            ACTIVE
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- REFRESH -->
+
+                    <button
+                        id="refreshAnalyticsBtn"
+                        class="btn btn-outline-primary refresh-btn"
+                        type="button"
+                    >
+
+                        <i class="bi bi-arrow-clockwise"></i>
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =================================================
+                 PAGE INTRO
+            ================================================== -->
+
+            <section class="section-page-header analytics-intro">
+
+                <div>
+
+                    <h3>
+                        NGO Performance Overview
+                    </h3>
+
+                    <p>
+                        Analytics are calculated only from response
+                        activity associated with your authorized NGO.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ANALYTICS PERIOD FILTER
+            ================================================== -->
+
+            <section
+                class="
+                    card
+                    dashboard-card
+                    analytics-filter-card
+                    page-section
+                "
+            >
+
+                <div class="analytics-filter-header">
+
+                    <div>
+
+                        <i class="bi bi-funnel-fill"></i>
+
+                        <strong>
+                            ANALYTICS PERIOD
+                        </strong>
+
+                    </div>
+
+
+                    <span
+                        id="analyticsPeriodLabel"
+                        class="period-label"
+                    >
+                        Last 30 Days
+                    </span>
+
+                </div>
+
+
+                <div class="analytics-filter-body">
+
+                    <div class="period-options">
+
+                        <button
+                            type="button"
+                            class="period-btn"
+                            data-period="7"
+                        >
+                            7 Days
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="period-btn active"
+                            data-period="30"
+                        >
+                            30 Days
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="period-btn"
+                            data-period="90"
+                        >
+                            90 Days
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="period-btn"
+                            data-period="all"
+                        >
+                            All Time
+                        </button>
+
+                    </div>
+
+
+                    <div class="analytics-updated">
+
+                        <i class="bi bi-clock-history"></i>
+
+                        Updated:
+
+                        <span id="lastUpdatedAt">
+                            Loading...
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 KEY STATISTICS
+            ================================================== -->
+
+            <section class="analytics-statistics page-section">
+
+
+                <!-- TOTAL HANDLED -->
+
+                <div
+                    class="
+                        dashboard-stat
+                        analytics-stat
+                        stat-total
+                    "
+                >
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-clipboard-data-fill"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            TOTAL HANDLED
+                        </small>
+
+                        <h3 id="stat-total">
+                            0
+                        </h3>
+
+                        <span class="stat-caption">
+                            Cases taken by NGO
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ACTIVE -->
+
+                <div
+                    class="
+                        dashboard-stat
+                        analytics-stat
+                        stat-active
+                    "
+                >
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-arrow-repeat"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            ACTIVE
+                        </small>
+
+                        <h3 id="stat-active">
+                            0
+                        </h3>
+
+                        <span class="stat-caption">
+                            Currently in progress
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COMPLETED -->
+
+                <div
+                    class="
+                        dashboard-stat
+                        analytics-stat
+                        stat-completed
+                    "
+                >
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            COMPLETED
+                        </small>
+
+                        <h3 id="stat-completed">
+                            0
+                        </h3>
+
+                        <span class="stat-caption">
+                            Successfully closed
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RELEASED -->
+
+                <div
+                    class="
+                        dashboard-stat
+                        analytics-stat
+                        stat-released
+                    "
+                >
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-arrow-return-left"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            RELEASED
+                        </small>
+
+                        <h3 id="stat-released">
+                            0
+                        </h3>
+
+                        <span class="stat-caption">
+                            Returned to response pool
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SOS -->
+
+                <div
+                    class="
+                        dashboard-stat
+                        analytics-stat
+                        stat-sos
+                    "
+                >
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-exclamation-octagon-fill"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            SOS HANDLED
+                        </small>
+
+                        <h3 id="stat-sos">
+                            0
+                        </h3>
+
+                        <span class="stat-caption">
+                            Emergency cases
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COMPLETION RATE -->
+
+                <div
+                    class="
+                        dashboard-stat
+                        analytics-stat
+                        stat-rate
+                    "
+                >
+
+                    <div class="stat-icon">
+
+                        <i class="bi bi-graph-up-arrow"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            COMPLETION RATE
+                        </small>
+
+                        <h3>
+                            <span id="stat-completion-rate">
+                                0
+                            </span>%
+                        </h3>
+
+                        <span class="stat-caption">
+                            Completed / handled
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 MAIN ANALYTICS GRID
+            ================================================== -->
+
+            <section class="analytics-main-grid page-section">
+
+
+                <!-- =================================================
+                     STATUS DISTRIBUTION
+                ================================================== -->
+
+                <div class="card dashboard-card analytics-card">
+
+                    <div class="card-header-custom">
+
+                        <div>
+
+                            <i class="bi bi-pie-chart-fill text-primary"></i>
+
+                            <strong>
+                                Case Status Distribution
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-container chart-container-small">
+
+                        <canvas id="statusChart"></canvas>
+
+
+                        <div
+                            id="statusChartEmpty"
+                            class="chart-empty d-none"
+                        >
+
+                            <i class="bi bi-bar-chart"></i>
+
+                            <span>
+                                No response data available.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CASE CATEGORIES
+                ================================================== -->
+
+                <div class="card dashboard-card analytics-card">
+
+                    <div class="card-header-custom">
+
+                        <div>
+
+                            <i class="bi bi-grid-3x3-gap-fill text-primary"></i>
+
+                            <strong>
+                                Case Categories
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="categoryBreakdown"
+                        class="
+                            breakdown-list
+                            compact-breakdown
+                        "
+                    >
+
+                        <div class="analytics-loading">
+
+                            <div
+                                class="
+                                    spinner-border
+                                    spinner-border-sm
+                                    text-primary
+                                "
+                            ></div>
+
+                            Loading categories...
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PERFORMANCE + OPERATIONAL SUMMARY
+            ================================================== -->
+
+            <section class="analytics-secondary-grid page-section">
+
+
+                <!-- RESPONSE PERFORMANCE -->
+
+                <div class="card dashboard-card analytics-card">
+
+                    <div class="card-header-custom">
+
+                        <div>
+
+                            <i class="bi bi-speedometer2 text-primary"></i>
+
+                            <strong>
+                                Response Performance
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="performance-content">
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-icon">
+
+                                <i class="bi bi-stopwatch"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <small>
+                                    AVG. RESPONSE TIME
+                                </small>
+
+                                <strong id="avgResponseTime">
+                                    —
+                                </strong>
+
+                                <span>
+                                    Report created → NGO takes case
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-icon">
+
+                                <i class="bi bi-check2-circle"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <small>
+                                    AVG. COMPLETION TIME
+                                </small>
+
+                                <strong id="avgCompletionTime">
+                                    —
+                                </strong>
+
+                                <span>
+                                    NGO takes case → completion
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-icon">
+
+                                <i class="bi bi-arrow-return-left"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <small>
+                                    RELEASE RATE
+                                </small>
+
+                                <strong id="releaseRate">
+                                    0%
+                                </strong>
+
+                                <span>
+                                    Released / handled
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- OPERATIONAL SUMMARY -->
+
+                <div class="card dashboard-card analytics-card">
+
+                    <div class="card-header-custom">
+
+                        <div>
+
+                            <i class="bi bi-activity text-primary"></i>
+
+                            <strong>
+                                Operational Summary
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="
+                            status-summary
+                            analytics-summary
+                        "
+                    >
+
+                        <div class="status-summary-item">
+
+                            <span>
+                                SOS Share
+                            </span>
+
+                            <strong id="summary-sos-share">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-summary-item">
+
+                            <span>
+                                Completion Share
+                            </span>
+
+                            <strong id="summary-completion-share">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-summary-item">
+
+                            <span>
+                                Release Share
+                            </span>
+
+                            <strong id="summary-release-share">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="status-summary-item">
+
+                            <span>
+                                Active Share
+                            </span>
+
+                            <strong id="summary-active-share">
+                                0%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RESPONSE ACTIVITY TREND
+            ================================================== -->
+
+            <section
+                class="
+                    card
+                    dashboard-card
+                    analytics-card
+                    page-section
+                "
+            >
+
+                <div class="card-header-custom">
+
+                    <div>
+
+                        <i class="bi bi-graph-up text-primary"></i>
+
+                        <strong>
+                            Response Activity Trend
+                        </strong>
+
+                    </div>
+
+
+                    <span
+                        class="chart-period-note"
+                        id="trendPeriodNote"
+                    >
+                        Last 30 Days
+                    </span>
+
+                </div>
+
+
+                <div class="chart-container chart-container-large">
+
+                    <canvas id="trendChart"></canvas>
+
+
+                    <div
+                        id="trendChartEmpty"
+                        class="chart-empty d-none"
+                    >
+
+                        <i class="bi bi-graph-down"></i>
+
+                        <span>
+                            Not enough response activity
+                            for a trend.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RECENT RESPONSE ACTIVITY
+            ================================================== -->
+
+            <section
+                class="
+                    card
+                    dashboard-card
+                    analytics-card
+                    page-section
+                "
+            >
+
+                <div class="card-header-custom">
+
+                    <div>
+
+                        <i class="bi bi-clock-history text-primary"></i>
+
+                        <strong>
+                            Recent Response Activity
+                        </strong>
+
+                    </div>
+
+
+                    <span
+                        class="activity-count"
+                        id="activityCount"
+                    >
+                        0 events
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="recentActivityContainer"
+                    class="activity-feed"
+                >
+
+                    <div class="analytics-loading">
+
+                        <div
+                            class="
+                                spinner-border
+                                spinner-border-sm
+                                text-primary
+                            "
+                        ></div>
+
+                        Loading response activity...
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ANALYTICS SECURITY NOTE
+            ================================================== -->
+
+            <section class="analytics-note page-section">
+
+                <i class="bi bi-shield-lock-fill"></i>
+
+
+                <div>
+
+                    <strong>
+                        Authorized NGO Analytics
+                    </strong>
+
+
+                    <p>
+                        These insights are generated from response
+                        actions associated with your NGO. Released
+                        cases remain part of your historical activity,
+                        while private citizen information is not
+                        displayed on this page.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <footer class="dashboard-footer">
+
+                <span>
+                    AapdaSetu Disaster Response Network
+                </span>
+
+
+                <span>
+
+                    <i class="bi bi-shield-lock-fill"></i>
+
+                    Authorized NGO Access
+
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==========================================================
+     BOOTSTRAP
+========================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
+
+
+
+<!-- ==========================================================
+     SUPABASE
+========================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+
+<!-- ==========================================================
+     CHART.JS
+========================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"
+></script>
+
+
+
+<!-- ==========================================================
+     ANALYTICS JAVASCRIPT
+========================================================== -->
+
+<script src="js/analytics.js"></script>
+
+
+</body>
+
+</html>

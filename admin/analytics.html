@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AapdaSetu | Analytics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { background-color: #f4f6f9; overflow-x: hidden; }
+        .sidebar { min-height: 100vh; background: #2c3e50; color: white; padding-top: 20px; position: fixed; width: 16.66%; }
+        .sidebar a { color: #b0c4de; text-decoration: none; padding: 15px 20px; display: flex; align-items: center; transition: 0.3s; border-left: 4px solid transparent; }
+        .sidebar a:hover { background: #34495e; color: #fff; }
+        .sidebar a.active { background: #34495e; color: #fff; border-left: 4px solid #0dcaf0; background: linear-gradient(90deg, rgba(52,73,94,1) 0%, rgba(44,62,80,0) 100%); }
+        .main-content { margin-left: 16.66%; padding: 20px; }
+        .stat-card { border: none; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 sidebar d-none d-md-block">
+            <h4 class="text-center mb-5 fw-bold pt-2">🛑 AapdaSetu</h4>
+            <small class="text-muted text-uppercase fw-bold ms-3" style="font-size: 0.7rem;">Operations</small>
+            <a href="index.html"><i class="bi bi-crosshair me-2"></i> Mission Control</a>
+            <a href="resource_allocation.html"><i class="bi bi-box-seam me-2"></i> Resource Alloc.</a>
+            <a href="ai_mesh.html"><i class="bi bi-cpu me-2"></i> AI Mesh Network</a>
+            <a href="analytics.html" class="active"><i class="bi bi-bar-chart me-2"></i> Analytics</a>
+            <div class="mt-5 pt-5"><a href="../index.html" class="text-danger"><i class="bi bi-box-arrow-left me-2"></i> Logout</a></div>
+        </div>
+
+        <div class="col-md-10 main-content">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="fw-bold text-dark">Post-Disaster Analytics</h3>
+                <button class="btn btn-outline-primary btn-sm fw-bold shadow-sm" onclick="loadAnalytics()">
+                    <i class="bi bi-arrow-clockwise"></i> Sync Data
+                </button>
+            </div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-md-3">
+                    <div class="card stat-card p-3 border-start border-4 border-primary h-100">
+                        <small class="text-muted fw-bold text-uppercase">Total Incidents</small>
+                        <h2 class="fw-bold mb-0" id="kpi-total">0</h2>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card p-3 border-start border-4 border-warning h-100">
+                        <small class="text-muted fw-bold text-uppercase">Pending / Active</small>
+                        <h2 class="fw-bold mb-0 text-warning" id="kpi-pending">0</h2>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card p-3 border-start border-4 border-success h-100">
+                        <small class="text-muted fw-bold text-uppercase">Completed Missions</small>
+                        <h2 class="fw-bold mb-0 text-success" id="kpi-resolved">0</h2>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stat-card p-3 border-start border-4 border-info h-100">
+                        <small class="text-muted fw-bold text-uppercase">Avg Response Time</small>
+                        <h2 class="fw-bold mb-0 text-info"><span id="kpi-avg-time">0</span> <small class="fs-6 text-muted">mins</small></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mb-4">
+                <div class="col-md-8">
+                    <div class="card stat-card p-3 h-100">
+                        <h6 class="fw-bold text-secondary mb-3"><i class="bi bi-graph-up"></i> Response Efficiency Trend</h6>
+                        <canvas id="timeChart" height="100"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card stat-card p-3 h-100">
+                        <h6 class="fw-bold text-secondary mb-3"><i class="bi bi-pie-chart"></i> Incident Breakdown</h6>
+                        <div style="height: 220px; display: flex; justify-content: center;">
+                            <canvas id="catChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card stat-card p-0 overflow-hidden">
+                <div class="card-header bg-white border-bottom py-3">
+                    <h6 class="fw-bold text-success mb-0"><i class="bi bi-check-circle-fill me-2"></i> Recently Completed Assignments</h6>
+                </div>
+                <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light sticky-top">
+                            <tr>
+                                <th>ID</th>
+                                <th>Category</th>
+                                <th>Location (Lat, Lng)</th>
+                                <th>Resolution Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="completed-assignments-body">
+                            <tr><td colspan="5" class="text-center text-muted py-4">Loading data...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+    // ================= CONFIGURATION =================
+    const SUPABASE_URL = 'https://cphqdgqtrosaxosdwdrz.supabase.co'; 
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNwaHFkZ3F0cm9zYXhvc2R3ZHJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3MjU4NDQsImV4cCI6MjA3OTMwMTg0NH0.CGhmghdxQaPpD6uxDjaoAmnhZZsOKiiwacNw-ZrpDQc';
+    
+    // FIX: Renamed variable to avoid conflict
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    let timeChartInstance = null;
+    let catChartInstance = null;
+
+    window.onload = function() {
+        loadAnalytics(); 
+        setupLiveAnalytics(); 
+    };
+
+    function setupLiveAnalytics() {
+        // Updated to use supabaseClient
+        supabaseClient.channel('analytics-live')
+            .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'citizen_reports' }, payload => {
+                console.log("New Analytics Data!", payload);
+                loadAnalytics(); 
+            })
+            .subscribe();
+    }
+
+    async function loadAnalytics() {
+        // 1. FETCH DATA
+        const { data: reports, error } = await supabaseClient
+            .from('citizen_reports')
+            .select('*')
+            .order('created_at', { ascending: false }); // Fetch newest first for the table
+
+        if (error || !reports) return console.error(error);
+
+        // 2. METRICS CALCULATION VARIABLES
+        let total = reports.length;
+        let pending = 0;
+        let resolved = 0;
+        let totalMinutes = 0;
+        let timedMissions = 0;
+        
+        const categories = {};
+        const responseLabels = [];
+        const responseData = [];
+        const tableBody = document.getElementById('completed-assignments-body');
+        tableBody.innerHTML = ''; // Clear old rows
+
+        // 3. PROCESS DATA LOOP
+        // Reverse array to build the time-chart from oldest to newest
+        const chronologicalReports = [...reports].reverse(); 
+
+        chronologicalReports.forEach(r => {
+            // KPI Counters (Assuming you have a 'status' column)
+            if (r.status === 'resolved' || r.status === 'completed') resolved++;
+            else pending++;
+
+            // Category Counter for Doughnut Chart
+            categories[r.category] = (categories[r.category] || 0) + 1;
+
+            // Time Math
+            if (r.deployment_time && r.created_at) {
+                const created = new Date(r.created_at);
+                const deployed = new Date(r.deployment_time);
+                const diffMinutes = Math.round((deployed - created) / 1000 / 60);
+                
+                // Add to chart data
+                responseLabels.push(`ID #${r.id}`);
+                responseData.push(diffMinutes);
+
+                // Add to average time calculator
+                totalMinutes += diffMinutes;
+                timedMissions++;
+            }
+        });
+
+        // 4. POPULATE COMPLETED TABLE
+        const resolvedReports = reports.filter(r => r.status === 'resolved' || r.status === 'completed');
+        
+        if (resolvedReports.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-4">No completed assignments yet.</td></tr>';
+        } else {
+            resolvedReports.forEach(r => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="fw-bold text-secondary">#${r.id}</td>
+                    <td><span class="badge bg-secondary">${r.category}</span></td>
+                    <td><small>${parseFloat(r.latitude).toFixed(4)}, ${parseFloat(r.longitude).toFixed(4)}</small></td>
+                    <td>${new Date(r.deployment_time || r.created_at).toLocaleString()}</td>
+                    <td><span class="badge bg-success"><i class="bi bi-check-lg"></i> Resolved</span></td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        // 5. UPDATE KPI UI
+        document.getElementById('kpi-total').innerText = total;
+        document.getElementById('kpi-pending').innerText = pending;
+        document.getElementById('kpi-resolved').innerText = resolved;
+        
+        const avgTime = timedMissions > 0 ? Math.round(totalMinutes / timedMissions) : 0;
+        document.getElementById('kpi-avg-time').innerText = avgTime;
+
+        // 6. RENDER CHARTS
+        renderCategoryChart(categories);
+        renderTimeChart(responseLabels, responseData);
+    }
+    
+    function renderCategoryChart(dataObj) {
+        const ctx = document.getElementById('catChart');
+        const labels = Object.keys(dataObj);
+        const values = Object.values(dataObj);
+        
+        // Define colors dynamically
+        const colors = labels.map(l => {
+            if(l === 'Medical') return '#dc3545'; // Red
+            if(l === 'Flood') return '#0d6efd';   // Blue
+            if(l === 'Food') return '#ffc107';    // Yellow
+            return '#6c757d'; // Grey default
+        });
+
+        if (catChartInstance) catChartInstance.destroy();
+
+        catChartInstance = new Chart(ctx, {
+            type: 'doughnut',
+            data: { 
+                labels: labels, 
+                datasets: [{ 
+                    data: values, 
+                    backgroundColor: colors,
+                    borderWidth: 0
+                }] 
+            },
+            options: { cutout: '70%', plugins: { legend: { position: 'bottom' } } }
+        });
+    }
+
+    function renderTimeChart(labels, data) {
+        const ctx = document.getElementById('timeChart');
+
+        if (timeChartInstance) timeChartInstance.destroy();
+
+        timeChartInstance = new Chart(ctx, {
+            type: 'line',
+            data: { 
+                labels: labels, 
+                datasets: [{ 
+                    label: 'Response Time (Minutes)', 
+                    data: data, 
+                    borderColor: '#0d6efd', 
+                    backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }] 
+            },
+            options: { 
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true, title: { display: true, text: 'Minutes' } }
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

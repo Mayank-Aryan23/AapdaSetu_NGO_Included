@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AapdaSetu | NGO Response Operations</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    >
+
+    <!-- NGO Styles -->
+    <link
+        rel="stylesheet"
+        href="css/ngo-style.css"
+    >
+</head>
+
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside class="col-md-2 sidebar d-none d-md-flex flex-column">
+
+            <!-- BRAND -->
+
+            <div class="sidebar-brand">
+
+                <i class="bi bi-shield-shaded"></i>
+
+                <span>
+                    AapdaSetu
+                </span>
+
+            </div>
+
+
+            <div class="sidebar-section-title">
+                NGO COMMAND CENTER
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar-navigation">
+
+                <a
+                    href="index.html"
+                    class="sidebar-link active"
+                >
+                    <i class="bi bi-speedometer2"></i>
+                    <span>Response Operations</span>
+                </a>
+
+
+                <a
+                    href="public-alerts.html"
+                    class="sidebar-link"
+                >
+                    <i class="bi bi-broadcast"></i>
+                    <span>Public Alerts</span>
+                </a>
+
+
+                <a
+                    href="my-responses.html"
+                    class="sidebar-link"
+                >
+                    <i class="bi bi-clipboard-check"></i>
+                    <span>My Responses</span>
+                </a>
+
+
+                <a
+                    href="analytics.html"
+                    class="sidebar-link"
+                >
+                    <i class="bi bi-bar-chart-line-fill"></i>
+                    <span>Analytics</span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR BOTTOM -->
+
+            <div class="sidebar-bottom mt-auto">
+
+                <div class="ngo-mini-profile">
+
+                    <div class="ngo-avatar">
+                        <i class="bi bi-building"></i>
+                    </div>
+
+                    <div class="ngo-mini-info">
+
+                        <strong id="sidebar-ngo-name">
+                            Loading...
+                        </strong>
+
+                        <small id="sidebar-ngo-code">
+                            NGO
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="ngoLogoutBtn"
+                >
+                    <i class="bi bi-box-arrow-left"></i>
+                    Secure Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+        ====================================================== -->
+
+        <main class="col-md-10 main-content">
+
+
+            <!-- =================================================
+                 HEADER
+            ================================================== -->
+
+            <div class="top-header">
+
+                <div class="page-header">
+
+                    <div class="page-kicker">
+                        NGO RESPONSE NETWORK
+                    </div>
+
+                    <h2>
+                        Response Operations
+                    </h2>
+
+                    <p>
+                        Monitor emergencies and coordinate citizen
+                        response requests.
+                    </p>
+
+                </div>
+
+
+                <!-- NGO IDENTITY -->
+
+                <div class="ngo-identity">
+
+                    <div class="identity-icon">
+                        <i class="bi bi-building-check"></i>
+                    </div>
+
+
+                    <div class="identity-details">
+
+                        <small>
+                            AUTHORIZED NGO
+                        </small>
+
+                        <strong id="header-ngo-name">
+                            Loading...
+                        </strong>
+
+                        <span id="header-ngo-code">
+                            NGO
+                        </span>
+
+                    </div>
+
+
+                    <div class="online-indicator">
+
+                        <span></span>
+
+                        ACTIVE
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 STATISTICS
+            ================================================== -->
+
+            <div class="row g-3 mb-4">
+
+
+                <!-- ACTIVE SOS -->
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="card stat-card stat-sos">
+
+                        <div class="stat-icon">
+
+                            <i class="bi bi-exclamation-octagon-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small>
+                                ACTIVE SOS
+                            </small>
+
+                            <h3 id="stat-sos">
+                                0
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- OPEN REPORTS -->
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="card stat-card stat-reports">
+
+                        <div class="stat-icon">
+
+                            <i class="bi bi-file-earmark-text-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small>
+                                OPEN REPORTS
+                            </small>
+
+                            <h3 id="stat-open">
+                                0
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- IN PROCESS -->
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="card stat-card stat-process">
+
+                        <div class="stat-icon">
+
+                            <i class="bi bi-arrow-repeat"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small>
+                                MY IN PROCESS
+                            </small>
+
+                            <h3 id="stat-process">
+                                0
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COMPLETED -->
+
+                <div class="col-xl-3 col-md-6">
+
+                    <div class="card stat-card stat-complete">
+
+                        <div class="stat-icon">
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small>
+                                MY COMPLETED
+                            </small>
+
+                            <h3 id="stat-complete">
+                                0
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MAIN OPERATIONS AREA
+                 LEFT = MAP
+                 RIGHT = REPORTS
+            ================================================== -->
+
+            <div class="row g-4">
+
+
+                <!-- =================================================
+                     LEFT : LIVE INCIDENT MAP
+                ================================================== -->
+
+                <div class="col-lg-7">
+
+                    <div class="card stat-card map-card">
+
+
+                        <!-- MAP HEADER -->
+
+                        <div class="card-header">
+
+                            <span class="section-heading">
+
+                                <i class="bi bi-geo-alt-fill"></i>
+
+                                Live Incident Map
+
+                            </span>
+
+
+                            <span
+                                class="badge bg-danger"
+                                id="active-alert-count"
+                            >
+                                0 Active Alerts
+                            </span>
+
+                        </div>
+
+
+                        <!-- MAP -->
+
+                        <div
+                            id="googleMap"
+                            class="map-container"
+                        >
+
+                            <div class="map-loading">
+
+                                <div class="spinner-border text-primary"></div>
+
+                                <span>
+                                    Loading incident map...
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     RIGHT : OPERATION PANEL
+                ================================================== -->
+
+                <div class="col-lg-5">
+
+                    <div class="card stat-card operations-card">
+
+
+                        <!-- =================================================
+                             TABS
+                        ================================================== -->
+
+                        <div class="card-header operation-tabs-header">
+
+                            <ul
+                                class="nav nav-tabs nav-fill"
+                                id="ngoOperationTabs"
+                                role="tablist"
+                            >
+
+
+                                <!-- SOS -->
+
+                                <li
+                                    class="nav-item"
+                                    role="presentation"
+                                >
+
+                                    <button
+                                        type="button"
+                                        class="nav-link active"
+                                        id="sosTab"
+                                    >
+
+                                        <i class="bi bi-person-exclamation text-danger"></i>
+
+                                        SOS
+
+                                        <span
+                                            class="badge bg-danger ms-1"
+                                            id="sos-count-badge"
+                                        >
+                                            0
+                                        </span>
+
+                                    </button>
+
+                                </li>
+
+
+
+                                <!-- CITIZEN REPORTS -->
+
+                                <li
+                                    class="nav-item"
+                                    role="presentation"
+                                >
+
+                                    <button
+                                        type="button"
+                                        class="nav-link"
+                                        id="reportsTab"
+                                    >
+
+                                        <i class="bi bi-file-earmark-text text-primary"></i>
+
+                                        Citizen Reports
+
+                                        <span
+                                            class="badge bg-primary ms-1"
+                                            id="reports-count-badge"
+                                        >
+                                            0
+                                        </span>
+
+                                    </button>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             PANEL BODY
+                        ================================================== -->
+
+                        <div class="card-body p-0 operation-panel-body">
+
+
+                            <!-- =================================================
+                                 SOS VIEW
+                            ================================================== -->
+
+                            <div
+                                id="sos-view"
+                                class="operation-view active"
+                            >
+
+                                <div class="operation-view-header">
+
+                                    <div>
+
+                                        <strong>
+                                            SOS Emergencies
+                                        </strong>
+
+                                        <small>
+                                            Highest priority citizen requests
+                                        </small>
+
+                                    </div>
+
+
+                                    <span class="priority-indicator">
+                                        PRIORITY
+                                    </span>
+
+                                </div>
+
+
+                                <div
+                                    id="sos-feed"
+                                    class="operation-feed"
+                                >
+
+                                    <div class="empty-state">
+
+                                        <i class="bi bi-shield-check"></i>
+
+                                        <p>
+                                            No active SOS emergencies.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 CITIZEN REPORT VIEW
+                            ================================================== -->
+
+                            <div
+                                id="reports-view"
+                                class="operation-view"
+                            >
+
+
+                                <!-- REPORT HEADER -->
+
+                                <div class="operation-view-header">
+
+                                    <div>
+
+                                        <strong>
+                                            Citizen Reports
+                                        </strong>
+
+                                        <small>
+                                            Non-SOS citizen reports
+                                        </small>
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-outline-secondary"
+                                        id="refreshReportsBtn"
+                                    >
+
+                                        <i class="bi bi-arrow-clockwise"></i>
+
+                                        Refresh
+
+                                    </button>
+
+                                </div>
+
+
+
+                                <!-- STATE FILTER -->
+
+                                <div class="report-controls">
+
+                                    <label for="stateFilter">
+                                        STATE
+                                    </label>
+
+
+                                    <select
+                                        id="stateFilter"
+                                        class="form-select form-select-sm"
+                                    >
+
+                                        <option value="ALL">
+                                            ALL
+                                        </option>
+
+                                        <option value="Bihar">
+                                            BIHAR ONLY
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+
+                                <!-- STATUS LEGEND -->
+
+                                <div class="report-legend">
+
+                                    <span>
+                                        <i class="legend-dot open"></i>
+                                        Open
+                                    </span>
+
+                                    <span>
+                                        <i class="legend-dot process"></i>
+                                        In Process
+                                    </span>
+
+                                    <span>
+                                        <i class="legend-dot released"></i>
+                                        Released
+                                    </span>
+
+                                    <span>
+                                        <i class="legend-dot completed"></i>
+                                        Completed
+                                    </span>
+
+                                </div>
+
+
+
+                                <!-- REPORT FEED -->
+
+                                <div
+                                    id="citizen-reports-feed"
+                                    class="operation-feed reports-container"
+                                >
+
+                                    <div class="loading-state">
+
+                                        <div class="spinner-border text-primary"></div>
+
+                                        <p>
+                                            Loading citizen reports...
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <footer class="dashboard-footer mt-4">
+
+                <span>
+                    AapdaSetu Disaster Response Network
+                </span>
+
+                <span>
+
+                    <i class="bi bi-shield-lock-fill"></i>
+
+                    Authorized NGO Access
+
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+</div>
+
+
+
+<!-- =========================================================
+     SCRIPTS
+========================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<!-- NGO APPLICATION -->
+
+<script src="js/ngo-script.js"></script>
+
+
+<!-- GOOGLE MAPS -->
+<!-- Keep your existing Google Maps script/key here -->
+
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNX00snr3BdhknJFTBX9l3ekhrhJzg8PA&callback=initMap&libraries=marker&loading=async"
+    async
+    defer
+></script>
+
+</body>
+
+</html>

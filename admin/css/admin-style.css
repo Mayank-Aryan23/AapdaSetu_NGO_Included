@@ -1,0 +1,117 @@
+/* Base Styles */
+body { 
+    background-color: #f4f6f9; 
+    overflow-x: hidden; 
+}
+
+/* Sidebar */
+.sidebar { 
+    min-height: 100vh; 
+    background: #2c3e50; 
+    color: white; 
+    padding-top: 20px; 
+    /* NEW: Keeps sidebar in place if the right side scrolls */
+    position: sticky; 
+    top: 0;
+}
+
+.sidebar a { 
+    color: #b0c4de; 
+    text-decoration: none; 
+    padding: 12px 20px; 
+    display: block; 
+    transition: 0.3s; 
+    border-left: 4px solid transparent; 
+}
+
+.sidebar a:hover, 
+.sidebar a.active { 
+    background: #34495e; 
+    color: #fff; 
+    border-left: 4px solid #3498db; 
+}
+
+/* Layout Components */
+.map-container { 
+    height: 55vh; 
+    width: 100%; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+
+.stat-card { 
+    border: none; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+    overflow: hidden; 
+}
+
+.panel-scroll { 
+    max-height: 65vh; 
+    overflow-y: auto; 
+    padding-right: 5px; /* Adds breathing room for the custom scrollbar */
+}
+
+/* --- NEW: Custom Slim Scrollbars for Panels --- */
+.panel-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+.panel-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 4px;
+}
+.panel-scroll::-webkit-scrollbar-thumb {
+    background: #c1c1c1; 
+    border-radius: 4px;
+}
+.panel-scroll::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8; 
+}
+
+/* Priority & Report Styles */
+.report-card-critical { 
+    border-left: 5px solid #dc3545; 
+    background-color: #fff5f5; 
+}
+
+.report-card-normal { 
+    border-left: 5px solid #6c757d; 
+    background-color: #ffffff;
+}
+
+/* --- NEW: Hover Animations for Interactive Cards --- */
+.report-card-critical, .report-card-normal {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.report-card-critical:hover, .report-card-normal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    cursor: pointer;
+}
+
+/* Tab Navigation */
+.nav-tabs .nav-link { 
+    color: #495057; 
+    font-weight: 600; 
+}
+
+.nav-tabs .nav-link.active { 
+    color: #000; 
+    border-top: 3px solid #0d6efd; 
+}
+
+/* --- NEW: CITIZEN SOS BADGE OVERFLOW FIX --- */
+#citizen-reports-feed .badge {
+    white-space: normal !important; 
+    word-break: break-word;         
+    text-align: left;               
+    display: inline-block;
+    max-width: 100%;                
+    line-height: 1.4;               
+    margin-top: 5px;
+}
+
+#citizen-reports-feed .d-flex {
+    flex-wrap: wrap;
+}

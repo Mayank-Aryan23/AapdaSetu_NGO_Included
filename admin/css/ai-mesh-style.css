@@ -1,0 +1,120 @@
+/* Base Styles */
+body { 
+    background-color: #f4f6f9; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    overflow-x: hidden; 
+}
+
+/* Sidebar Layout & Styling */
+.sidebar { 
+    min-height: 100vh; 
+    background: #1a252f; 
+    color: white; 
+    padding-top: 20px; 
+    position: fixed; 
+    width: 16.66%; 
+    z-index: 100; 
+}
+
+.sidebar a { 
+    color: #b0c4de; 
+    text-decoration: none; 
+    padding: 15px 20px; 
+    display: flex; 
+    align-items: center; 
+    transition: 0.3s; 
+    border-left: 4px solid transparent; 
+}
+
+.sidebar a:hover { 
+    background: #34495e; 
+    color: #fff; 
+}
+
+.sidebar a.active { 
+    background: #2c3e50; 
+    color: #fff; 
+    border-left: 4px solid #0dcaf0; 
+    background: linear-gradient(90deg, rgba(44,62,80,1) 0%, rgba(26,37,47,0) 100%); 
+}
+
+/* Main Content Area */
+.main-content { 
+    margin-left: 16.66%; 
+    padding: 30px; 
+}
+
+/* Map Container */
+.map-container { 
+    height: 65vh; 
+    width: 100%; 
+    border-radius: 12px; 
+    border: 2px solid #2c3e50; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); 
+}
+
+/* Node Stats List & Cards */
+.node-panel { 
+    background: #1a252f; 
+    border-radius: 12px; 
+    color: white; 
+    padding: 20px; 
+    height: 65vh; 
+    overflow-y: auto; 
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1); 
+}
+
+.compact-node-card { 
+    background: #2c3e50; 
+    border-radius: 8px; 
+    padding: 12px; 
+    margin-bottom: 12px; 
+    border-left: 4px solid #198754; 
+    transition: 0.3s; 
+    cursor: pointer; 
+}
+
+.compact-node-card:hover { 
+    background: #34495e; 
+    transform: translateX(-2px); 
+}
+
+.compact-node-card.warning-state { 
+    border-left-color: #ffc107; 
+    background: rgba(255, 193, 7, 0.1); 
+}
+
+/* Badges & Indicators */
+.stat-pill { 
+    background: rgba(0,0,0,0.2); 
+    border-radius: 20px; 
+    padding: 4px 8px; 
+    font-size: 0.75rem; 
+    font-weight: bold; 
+}
+
+.text-danger-custom { color: #ff6b6b !important; }
+.text-warning-custom { color: #feca57 !important; }
+.text-success-custom { color: #1dd1a1 !important; }
+
+/* Custom Scrollbar */
+.node-panel::-webkit-scrollbar { 
+    width: 6px; 
+}
+.node-panel::-webkit-scrollbar-track { 
+    background: #1a252f; 
+}
+.node-panel::-webkit-scrollbar-thumb { 
+    background: #0dcaf0; 
+    border-radius: 10px; 
+}
+
+/* Google Maps Custom Advanced Marker Dot */
+.mesh-center-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    border: 2px solid #0dcaf0;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(13, 202, 240, 0.8);
+}

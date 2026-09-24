@@ -1,0 +1,98 @@
+/* Base Styles */
+body { 
+    background-color: #f4f6f9; 
+    overflow-x: hidden; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+/* Sidebar Styling */
+.sidebar { 
+    min-height: 100vh; 
+    background: #1a252f; 
+    color: white; 
+    padding-top: 20px; 
+    position: fixed; 
+    width: 16.66%; 
+    z-index: 100; 
+}
+
+.sidebar a { 
+    color: #b0c4de; 
+    text-decoration: none; 
+    padding: 15px 20px; 
+    display: flex; 
+    align-items: center; 
+    transition: 0.3s; 
+    border-left: 4px solid transparent; 
+}
+
+.sidebar a:hover { 
+    background: #34495e; 
+    color: #fff; 
+}
+
+.sidebar a.active { 
+    background: #2c3e50; 
+    color: #fff; 
+    border-left: 4px solid #0dcaf0; 
+    background: linear-gradient(90deg, rgba(44,62,80,1) 0%, rgba(26,37,47,0) 100%); 
+}
+
+/* Main Content Area */
+.main-content { 
+    margin-left: 16.66%; 
+    padding: 30px; 
+}
+
+/* Cards & Indicators */
+.stat-card { 
+    border: none; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+    transition: transform 0.2s; 
+}
+
+.stat-card:hover { 
+    transform: translateY(-2px); 
+}
+
+/* Status Dots */
+.status-dot { 
+    height: 10px; 
+    width: 10px; 
+    border-radius: 50%; 
+    display: inline-block; 
+    margin-right: 6px; 
+}
+
+.dot-Available { 
+    background-color: #198754; 
+    box-shadow: 0 0 8px #198754; 
+}
+
+.dot-Deployed { 
+    background-color: #dc3545; 
+    box-shadow: 0 0 8px #dc3545; 
+}
+
+.dot-Maintenance { 
+    background-color: #ffc107; 
+}
+
+/* AI Suggestion Animations */
+.ai-suggestion { 
+    border-left: 5px solid #6610f2; 
+    background-color: #fff; 
+    animation: slideIn 0.5s ease-out; 
+}
+
+@keyframes slideIn { 
+    from { 
+        opacity: 0; 
+        transform: translateX(-20px); 
+    } 
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    } 
+}
