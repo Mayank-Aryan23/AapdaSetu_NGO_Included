@@ -5,6 +5,16 @@ AapdaSetu is a **full-stack, AI-powered disaster management and response ecosyst
 The platform combines a **citizen mobile application, automated disaster alert processing, AI-powered intelligence, an administrative control platform, and a dedicated NGO response portal** to support faster and more coordinated disaster response.
 
 ---
+# 📥 Download APK
+
+Download the latest Android APK from the **GitHub Releases** section.
+
+👉 **Latest Release**
+
+https://github.com/Ayush-620/AapdaSetu-Mobile/releases/latest
+
+# Website Access 
+https://aapdasetu-ngo-included.onrender.com/
 
 ## 🎯 Problem Statement
 
