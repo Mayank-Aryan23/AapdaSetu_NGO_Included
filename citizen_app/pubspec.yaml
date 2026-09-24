@@ -1,0 +1,37 @@
+name: aapdasetu_v2
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  supabase_flutter: ^2.5.6
+  permission_handler: ^11.3.0 
+
+  geolocator: ^14.0.2
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  connectivity_plus: ^7.1.0
+
+  image_picker: ^1.2.1
+  record: ^6.2.0
+  path_provider: ^2.1.5
+  speech_to_text: ^7.3.0
+  http: ^1.6.0
+
+  just_audio: ^0.9.36
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

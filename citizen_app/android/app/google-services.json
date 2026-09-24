@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "314199960742",
+    "project_id": "aapdasetu-v2",
+    "storage_bucket": "aapdasetu-v2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314199960742:android:1ecbec6dea2d279b269867",
+        "android_client_info": {
+          "package_name": "com.example.aapdasetu_v2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxgwo4ehQcS90ra2h2gHoM4r6n65wAQLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
