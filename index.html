@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AapdaSetu | Secure Command Gateway</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="bg-light">
+
+    <div class="container-fluid min-vh-100 p-0">
+        <div class="row g-0 min-vh-100">
+            
+            <div class="col-lg-7 command-bg d-flex flex-column justify-content-center align-items-center text-white p-4 p-md-5 position-relative overflow-hidden">
+                
+                <div class="position-absolute w-100 h-100 z-0" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/c5/India_outline_map.svg'); background-size: 80%; background-position: center 60%; background-repeat: no-repeat; opacity: 0.15;"></div>
+
+                <div class="radar-container position-absolute w-100 h-100 opacity-50 z-1">
+                    <div class="alert-blip critical" style="top: 35%; left: 55%;">
+                        <div class="ring"></div><div class="dot"></div>
+                    </div>
+                    <div class="alert-blip moderate" style="top: 65%; left: 35%;">
+                        <div class="ring"></div><div class="dot"></div>
+                    </div>
+                    <div class="alert-blip general" style="top: 80%; left: 65%;">
+                        <div class="ring"></div><div class="dot"></div>
+                    </div>
+                </div>
+
+                <div id="liveFeedContainer" class="position-absolute w-100 h-100 z-1 pe-none"></div>
+
+                <div class="content text-center z-2 p-4 p-md-5 command-glass rounded-4 mt-4" style="max-width: 500px;">
+                    <h2 class="display-5 fw-bold tracking-wide text-white mb-0">AAPDASETU</h2>
+                    <h6 class="text-warning fw-light tracking-wide mt-2 mb-3">CENTRAL COMMAND GATEWAY</h6>
+                    
+                    <p class="text-light opacity-75 small mb-4 fst-italic" style="line-height: 1.6;">
+                        "Anticipate the threat. Coordinate the response. Protect the citizens.<br> Real-time intelligence for immediate action."
+                    </p>
+                    
+                    <div class="status-badge d-inline-flex align-items-center px-4 py-2 mt-2 rounded-pill border border-success">
+                        <div class="pulse-dot me-3"></div>
+                        <span class="text-success fw-bold font-monospace small">SECURE UPLINK ESTABLISHED</span>
+                    </div>
+                </div>
+                
+                <div class="position-absolute bottom-0 start-0 p-4 text-white-50 small z-2 font-monospace d-none d-md-block">
+                    <i class="bi bi-shield-lock-fill text-success"></i> DEFENSE PROTOCOL ACTIVE
+                </div>
+            </div>
+
+            <div class="col-lg-5 d-flex justify-content-center align-items-center p-4 p-md-5 bg-color-auth">
+                
+                <div class="auth-card w-100 bg-white p-4 p-md-5 rounded-4 shadow-sm border"
+     style="max-width: 480px;">
+
+    <!-- LOGIN MODE SWITCH -->
+    <div class="login-mode-switch mx-auto mb-4">
+        <button
+            type="button"
+            class="login-mode-btn active"
+            id="adminModeBtn">
+            ADMIN
+        </button>
+
+        <button
+            type="button"
+            class="login-mode-btn"
+            id="ngoModeBtn">
+            NGO
+        </button>
+    </div>
+
+    <!-- HEADER -->
+    <div class="text-center mb-4">
+
+        <div class="icon-circle mx-auto mb-3">
+            <i
+                class="bi bi-fingerprint fs-2 text-command"
+                id="loginIcon">
+            </i>
+        </div>
+
+        <h3
+            class="fw-bold text-dark mb-1"
+            id="loginTitle">
+            Admin Identity Verification
+        </h3>
+
+        <p
+            class="text-muted small"
+            id="loginSubtitle">
+            Authorized disaster management personnel only.
+        </p>
+
+    </div>
+
+
+    <!-- LOGIN FORM -->
+
+    <form id="loginForm">
+
+        <!-- ADMIN / NGO ID -->
+
+        <div class="mb-4">
+
+            <label
+                for="loginIdentifier"
+                class="form-label text-muted small fw-bold text-uppercase tracking-wide"
+                id="identifierLabel">
+
+                <i class="bi bi-person-badge me-1"></i>
+                Government ID
+
+            </label>
+
+            <input
+                type="text"
+                class="form-control form-control-lg bg-light border-0"
+                id="loginIdentifier"
+                placeholder="admin@ndma.gov.in"
+                autocomplete="username"
+                required>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="mb-5">
+
+            <label
+                for="loginPassword"
+                class="form-label text-muted small fw-bold text-uppercase tracking-wide"
+                id="passwordLabel">
+
+                <i class="bi bi-key-fill me-1"></i>
+                Clearance Password
+
+            </label>
+
+            <div class="position-relative">
+
+                <input
+                    type="password"
+                    class="form-control form-control-lg bg-light border-0 pe-5"
+                    id="loginPassword"
+                    placeholder="••••••••"
+                    autocomplete="current-password"
+                    required>
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    id="passwordToggle"
+                    aria-label="Show password">
+
+                    <i class="bi bi-eye"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOGIN BUTTON -->
+
+        <button
+            type="submit"
+            class="btn btn-command w-100 py-3 fw-bold tracking-wide rounded-3"
+            id="loginAccessBtn">
+
+            AUTHENTICATE ADMIN SESSION
+
+        </button>
+
+
+        <!-- ACCESS NOTICE -->
+
+        <div class="text-center mt-4 pt-3 border-top">
+
+            <small
+                class="text-danger fw-bold"
+                id="accessNotice">
+
+                <i class="bi bi-shield-x me-1"></i>
+                Authorized administrative access only.
+
+            </small>
+
+        </div>
+
+    </form>
+
+</div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
