@@ -17,13 +17,28 @@ https://github.com/Ayush-620/AapdaSetu-Mobile/releases/latest
 https://aapdasetu-ngo-included.onrender.com/
 
 **Credential for Login on Website**
+
 **For Admin**
+
 ID: admin@ndma.gov.in
+
 Password: admin123#1@
 
+
 **For NGO**
+
 ID: NGO-TEST-002
+
 Password: test123
+
+## Tutorial Video
+**Citizen App** 
+
+https://drive.google.com/file/d/1fv1_1yEG3AQbO3TVt1XfLUubU6l97hMa/view?usp=sharing
+
+**NGO Portal**
+
+https://drive.google.com/file/d/1DMvkuKkZusli-JldqQpl98oINVrmrQKI/view?usp=sharing
 
 ## 🎯 Problem Statement
 
